@@ -41,7 +41,7 @@ loop = asyncio.get_event_loop()
 HELPABLE = {}
 
 
-async def start_bot():
+async def sstart_bot():
     print("[INFO]: STARTING BOT CLIENT")
     await app.start()
     print("[INFO]: STARTING USERBOT CLIENT")
@@ -102,7 +102,7 @@ async def start_bot():
     await aiohttpsession.close()
 
 
-@app.on_message(filters.command(["help", "start"]))
+@app.on_message(filters.command(["shelp", "sstart"]))
 async def help_command(_, message):
     if message.chat.type != "private":
         keyboard = InlineKeyboardMarkup(
@@ -178,8 +178,8 @@ You can choose an option below, by clicking a button.
 Also you can ask anything in Support Group.
 
 General command are:
- - /start: Start the bot
- - /help: Give this message""".format(
+ - /sstart: Start the bot
+ - /shelp: Give this message""".format(
             first_name=name,
             bot_name=BOT_NAME,
         ),
@@ -209,7 +209,7 @@ async def stats_callbacc(_, CallbackQuery):
     )
 
 
-@app.on_callback_query(filters.regex(r"help_(.*?)"))
+@app.on_callback_query(filters.regex(r"shelp_(.*?)"))
 async def help_button(client, query):
     mod_match = re.match(r"help_module\((.+?)\)", query.data)
     prev_match = re.match(r"help_prev\((.+?)\)", query.data)
